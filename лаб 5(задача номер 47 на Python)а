@@ -1,0 +1,12 @@
+m = int(input("Введите числитель (m): "))
+n = int(input("Введите знаменатель (n): "))
+while True:
+    a, b = m, n
+    while b != 0:
+        a, b = b, a % b
+    common_divisor = a
+    if common_divisor == 1:
+        break
+    m //= common_divisor
+    n //= common_divisor
+print(f"Сокращённая дробь: {m}/{n}")
