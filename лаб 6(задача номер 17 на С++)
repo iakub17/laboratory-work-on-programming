@@ -1,0 +1,26 @@
+#include <iostream>
+
+int main() {
+    int n, m;
+    std::cout << "Введите количество сенокосилок (n): ";
+    std::cin >> n;
+    std::cout << "Введите время работы первой сенокосилки в часах (m): ";
+    std::cin >> m;
+
+    int total_minutes = 0;
+    int current_minutes = m * 60;
+
+    do {
+        total_minutes += current_minutes;
+        current_minutes += 10;
+        n--;
+    } while (n > 0);
+
+    int total_hours = total_minutes / 60;
+    int remaining_minutes = total_minutes % 60;
+
+    std::cout << "Общее время работы всей бригады: "
+              << total_hours << " часов и " << remaining_minutes << " минут." << std::endl;
+
+    return 0;
+}
