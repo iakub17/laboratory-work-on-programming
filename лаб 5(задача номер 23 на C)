@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    int number = 10;
+    int sum = 0;
+    while (number <= 99) {
+        sum += number;
+        number++;
+    }
+    printf("Сумма всех двузначных чисел: %d\n", sum);
+
+    return 0;
+}
