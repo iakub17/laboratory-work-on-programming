@@ -1,0 +1,11 @@
+number = 10
+print("Двузначные числа, сумма квадратов цифр которых делится на 13:")
+while True:
+    tens = number // 10
+    ones = number % 10
+    sum_of_squares = tens**2 + ones**2
+    if sum_of_squares % 13 == 0:
+        print(number, end=" ")
+    number += 1
+    if number > 99:
+        break
