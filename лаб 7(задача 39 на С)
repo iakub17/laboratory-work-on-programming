@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Введите размер массива N: ");
+    while (scanf("%d", &n) != 1 || n <= 0) {
+        printf("Ошибка: введите корректное положительное число.\n");
+        while (getchar() != '\n');
+    }
+    if (n <= 0) {
+        printf("Размер массива должен быть больше 0.\n");
+        return 1;
+    }
+    int arr[n];
+    printf("Введите элементы массива:\n");
+
+    for (int i = 0; i < n; i++) {
+        printf("Элемент %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+    int monotonic_count = 0;
+    int i = 0;
+
+    while (i < n - 1) {
+        if (arr[i] < arr[i + 1]) {
+            while (i < n - 1 && arr[i] < arr[i + 1]) {
+                i++;
+            }
+            monotonic_count++;
+        } else if (arr[i] > arr[i + 1]) {
+            while (i < n - 1 && arr[i] > arr[i + 1]) {
+                i++;
+            }
+            monotonic_count++;
+        } else {
+            i++;
+        }
+    }
+
+    printf("Количество промежутков монотонности: %d\n", monotonic_count);
+
+    return 0;
+}
