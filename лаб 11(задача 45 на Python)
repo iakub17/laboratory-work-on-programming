@@ -1,0 +1,21 @@
+#Лаба 11 Питон
+def delete_row(matrix, K):
+    del matrix[K-1]
+    return matrix
+def input_matrix(M, N):
+    matrix = []
+    print("Введите элементы матрицы:")
+    for i in range(M):
+        row = list(map(int, input().split()))
+        matrix.append(row)
+    return matrix
+def print_matrix(matrix):
+    for row in matrix:
+        print(*row)
+M = int(input("Введите количество строк (M): "))
+N = int(input("Введите количество столбцов (N): "))
+matrix = input_matrix(M, N)
+K = int(input(f"Введите номер строки K (1 <= K <= {M}): "))
+matrix = delete_row(matrix, K)
+print("Измененная матрица:")
+print_matrix(matrix)
