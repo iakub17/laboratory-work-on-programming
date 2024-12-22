@@ -1,0 +1,62 @@
+//13-я лаба Си++
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+struct Pen {
+    std::string country;
+    double line_thickness;
+    std::string type;
+    double price;
+};
+
+void sort_by_price(Pen pens[], int n) {
+    std::sort(pens, pens + n, [](const Pen& a, const Pen& b) {
+        return a.price < b.price;
+    });
+}
+
+void input_pens(Pen pens[], int n) {
+    for (int i = 0; i < n; i++) {
+        std::cout << "Введите данные о ручке #" << i + 1 << std::endl;
+        std::cout << "Страна производитель: ";
+        std::getline(std::cin, pens[i].country);
+        std::cout << "Толщина линии письма: ";
+        std::cin >> pens[i].line_thickness;
+        std::cin.ignore();
+        std::cout << "Вид (шариковая/гелевая): ";
+        std::getline(std::cin, pens[i].type);
+        std::cout << "Цена: ";
+        std::cin >> pens[i].price;
+        std::cin.ignore();
+    }
+}
+
+void print_pens(Pen pens[], int n) {
+    std::cout << "\nИнформация о ручках:\n";
+    for (int i = 0; i < n; i++) {
+        std::cout << "\nРучка #" << i + 1 << ":\n";
+        std::cout << "Страна производитель: " << pens[i].country << std::endl;
+        std::cout << "Толщина линии письма: " << pens[i].line_thickness << " мм" << std::endl;
+        std::cout << "Вид: " << pens[i].type << std::endl;
+        std::cout << "Цена: " << pens[i].price << " рублей" << std::endl;
+    }
+}
+
+int main() {
+    int n;
+
+    std::cout << "Введите количество ручек: ";
+    std::cin >> n;
+    std::cin.ignore();
+
+    Pen pens[n];
+
+    input_pens(pens, n);
+
+    sort_by_price(pens, n);
+
+    print_pens(pens, n);
+
+    return 0;
+}
