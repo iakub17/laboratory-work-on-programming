@@ -1,0 +1,30 @@
+//12 лаба с++
+#include <iostream>
+#include <string>
+
+struct Chair {
+    std::string country;
+    double height;
+    std::string material;
+    double price;
+};
+
+int main() {
+    Chair chair;
+    std::cout << "Введите страну производителя: ";
+    std::getline(std::cin, chair.country);
+    std::cout << "Введите высоту кресла (в см): ";
+    std::cin >> chair.height;
+    std::cin.ignore();  // Для того чтобы очистить буфер после ввода числа
+    std::cout << "Введите материал, из которого изготовлено кресло: ";
+    std::getline(std::cin, chair.material);
+    std::cout << "Введите цену кресла: ";
+    std::cin >> chair.price;
+    std::cout << "\nИнформация о кресле:\n";
+    std::cout << "Страна производитель: " << chair.country << std::endl;
+    std::cout << "Высота кресла: " << chair.height << " см" << std::endl;
+    std::cout << "Материал: " << chair.material << std::endl;
+    std::cout << "Цена: " << chair.price << " рублей" << std::endl;
+
+    return 0;
+}
