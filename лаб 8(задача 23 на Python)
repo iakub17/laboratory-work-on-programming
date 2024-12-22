@@ -1,0 +1,19 @@
+#Лаба 8 питон
+M = int(input("Введите количество строк (M): "))
+N = int(input("Введите количество столбцов (N): "))
+matrix = []
+print("Введите элементы матрицы:")
+for _ in range(M):
+    row = list(map(int, input().split()))
+    matrix.append(row)
+result = 0
+for j in range(N):
+    all_odd = True
+    for i in range(M):
+        if matrix[i][j] % 2 == 0:
+            all_odd = False
+            break
+    if all_odd:
+        result = j + 1
+        break
+print("Номер первого столбца, содержащего только нечетные числа:", result)
