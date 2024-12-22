@@ -1,0 +1,41 @@
+//Лаба 11 Си
+#include <stdio.h>
+int sum_of_row(int matrix[][100], int N, int row) {
+    int sum = 0;
+    for (int j = 0; j < N; j++) {
+        sum += matrix[row][j];
+    }
+    return sum;
+}
+void find_row_with_max_sum(int matrix[][100], int M, int N) {
+    int max_sum = sum_of_row(matrix, N, 0);
+    int row_index = 0;
+    for (int i = 1; i < M; i++) {
+        int current_sum = sum_of_row(matrix, N, i);
+        if (current_sum > max_sum) {
+            max_sum = current_sum;
+            row_index = i;
+        }
+    }
+    printf("Номер строки с наибольшей суммой: %d\n", row_index + 1); // Индексы с 1
+    printf("Значение наибольшей суммы: %d\n", max_sum);
+}
+
+int main() {
+    int M, N;
+    printf("Введите количество строк (M): ");
+    scanf("%d", &M);
+    printf("Введите количество столбцов (N): ");
+    scanf("%d", &N);
+
+    int matrix[100][100];
+    printf("Введите элементы матрицы:\n");
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    find_row_with_max_sum(matrix, M, N);
+
+    return 0;
+}
