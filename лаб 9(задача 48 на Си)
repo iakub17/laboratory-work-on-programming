@@ -1,0 +1,17 @@
+//Лаба 9 Си
+#include <stdio.h>
+int shefferStroke(int A, int B) {
+    return !(A && B);
+}
+
+int main() {
+    int A, B;
+    printf("Введите значение A (0 или 1): ");
+    scanf("%d", &A);
+    printf("Введите значение B (0 или 1): ");
+    scanf("%d", &B);
+    int result = shefferStroke(A, B);
+    printf("Результат операции A NAND B: %d\n", result);
+
+    return 0;
+}
