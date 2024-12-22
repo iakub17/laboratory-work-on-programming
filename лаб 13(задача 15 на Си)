@@ -1,0 +1,70 @@
+//13-я лаба Си
+#include <stdio.h>
+#include <string.h>
+
+struct Insurance {
+    char program_name[100];
+    double interest_rate;
+    int term;
+    double insurance_amount;
+};
+void sort_by_amount(struct Insurance arr[], int n) {
+    struct Insurance temp;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i].insurance_amount > arr[j].insurance_amount) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+
+void input_insurances(struct Insurance arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("Введите данные о страховке #%d\n", i + 1);
+        printf("Название программы: ");
+        fgets(arr[i].program_name, sizeof(arr[i].program_name), stdin);
+        arr[i].program_name[strcspn(arr[i].program_name, "\n")] = '\0';
+
+        printf("Процентная ставка: ");
+        scanf("%lf", &arr[i].interest_rate);
+
+        printf("Срок предоставления страховки (в годах): ");
+        scanf("%d", &arr[i].term);
+
+        printf("Сумма страховки: ");
+        scanf("%lf", &arr[i].insurance_amount);
+
+        getchar();
+    }
+}
+
+void print_insurances(struct Insurance arr[], int n) {
+    printf("\nИнформация о страховках:\n");
+    for (int i = 0; i < n; i++) {
+        printf("\nСтраховка #%d:\n", i + 1);
+        printf("Название программы: %s\n", arr[i].program_name);
+        printf("Процентная ставка: %.2f%%\n", arr[i].interest_rate);
+        printf("Срок: %d лет\n", arr[i].term);
+        printf("Сумма страховки: %.2f\n", arr[i].insurance_amount);
+    }
+}
+
+int main() {
+    int n;
+    printf("Введите количество страховых программ: ");
+    scanf("%d", &n);
+    getchar();
+
+    struct Insurance insurances[n];
+
+    input_insurances(insurances, n);
+
+    sort_by_amount(insurances, n);
+
+    print_insurances(insurances, n);
+
+    return 0;
+}
