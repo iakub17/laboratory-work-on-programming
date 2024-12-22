@@ -1,0 +1,35 @@
+//12-я лаба Си
+#include <stdio.h>
+#include <string.h>
+
+struct Bag {
+    char country[50];
+    double size;
+    char material[50];
+    double price;
+};
+
+int main() {
+    struct Bag bag;
+    printf("Введите страну производителя: ");
+    fgets(bag.country, sizeof(bag.country), stdin);
+    bag.country[strcspn(bag.country, "\n")] = '\0';
+
+    printf("Введите размер сумки: ");
+    scanf("%lf", &bag.size);
+    getchar();
+
+    printf("Введите материал, из которого изготовлена сумка: ");
+    fgets(bag.material, sizeof(bag.material), stdin);
+    bag.material[strcspn(bag.material, "\n")] = '\0';
+
+    printf("Введите цену сумки: ");
+    scanf("%lf", &bag.price);
+    printf("\nИнформация о сумке:\n");
+    printf("Страна производитель: %s\n", bag.country);
+    printf("Размер сумки: %.2f\n", bag.size);
+    printf("Материал: %s\n", bag.material);
+    printf("Цена: %.2f рублей\n", bag.price);
+
+    return 0;
+}
