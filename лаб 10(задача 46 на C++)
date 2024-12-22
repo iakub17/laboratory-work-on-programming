@@ -1,0 +1,39 @@
+//Лаба 10 с++
+#include <iostream>
+#include <cmath>
+void findClosestPair(int arr[], int N, int R) {
+    int closest_sum = arr[0] + arr[1];
+    int index1 = 0, index2 = 1;
+    for (int i = 0; i < N - 1; i++) {
+        for (int j = i + 1; j < N; j++) {
+            int current_sum = arr[i] + arr[j];
+            if (std::abs(current_sum - R) < std::abs(closest_sum - R)) {
+                closest_sum = current_sum;
+                index1 = i;
+                index2 = j;
+            }
+        }
+    }
+    if (index1 < index2) {
+        std::cout << "Элементы: " << arr[index1] << " и " << arr[index2] << std::endl;
+    } else {
+        std::cout << "Элементы: " << arr[index2] << " и " << arr[index1] << std::endl;
+    }
+}
+
+int main() {
+    int R, N;
+    std::cout << "Введите число R: ";
+    std::cin >> R;
+    std::cout << "Введите размер массива N: ";
+    std::cin >> N;
+
+    int arr[N];
+    std::cout << "Введите элементы массива:\n";
+    for (int i = 0; i < N; i++) {
+        std::cin >> arr[i];
+    }
+    findClosestPair(arr, N, R);
+
+    return 0;
+}
